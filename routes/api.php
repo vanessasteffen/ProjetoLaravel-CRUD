@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthenticateController;
 Route::post('login', [AuthenticateController::class,'authenticate']);
 Route::post('login-refresh', [AuthenticateController::class,'refreshToken']);
 Route::get('me', [AuthenticateController::class,'getAuthenticatedUser']);
+//teste aqui
 
 
 //Route::group(['middleware' => 'auth:api'],
