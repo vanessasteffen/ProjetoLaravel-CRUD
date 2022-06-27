@@ -19,6 +19,20 @@ class ProdutoApiController extends MasterApiController
         $this->request = $request;
     }
 
+    public function registerProduct(Request $request)
+    {
+        $product = new Produto;
+
+        $product->cliente_id = $request->cliente_id;
+        $product->name = $request->name;
+        $product->size = $request->size;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->save();
+
+        return response()->json('Cadastrado com sucesso!');
+    }
+
     public function cliente($id){
         if (!$data = $this->model->with('cliente')->find($id)) {
             return response()->json(['error' => 'Nada foi encontrado!', 404]);
