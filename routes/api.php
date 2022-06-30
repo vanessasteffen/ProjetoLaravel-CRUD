@@ -30,6 +30,7 @@ Route::get('me', [AuthenticateController::class,'getAuthenticatedUser']);
 //rotas de produto
     Route::post('register/produto', [ProdutoApiController::class, "registerProduct"]);
     Route::get('produto/{id}/clientes', [ProdutoApiController::class, 'cliente']);
+    Route::delete('produto/{id}', [ProdutoApiController::class, 'delete']);
     Route::apiResource('produto', ProdutoApiController::class);
 //});
 
