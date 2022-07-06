@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProdutoApiController extends MasterApiController
 {
@@ -51,5 +53,19 @@ class ProdutoApiController extends MasterApiController
         } else {
             return "Produto não existe";
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Produto::findOrFail($id);
+        $product->update([
+            'cliente_id' => $request->cliente_id,
+            'name' => $request->name,
+            'size' => $request->size,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
+        //return view('produto.update', ['produto' => $product]);
+        return "Produto Atualizado com Sucesso!";
     }
 }

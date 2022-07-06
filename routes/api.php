@@ -8,30 +8,30 @@ use App\Http\Controllers\AuthenticateController;
 //Route:: get('/clientes', [ClienteApiController::class, 'index']);
 
 //rotas de login
-Route::post('login', [AuthenticateController::class,'authenticate']);
-Route::post('login-refresh', [AuthenticateController::class,'refreshToken']);
-Route::get('me', [AuthenticateController::class,'getAuthenticatedUser']);
-
+Route::post('login', [AuthenticateController::class, 'authenticate']);
+Route::post('login-refresh', [AuthenticateController::class, 'refreshToken']);
+Route::get('me', [AuthenticateController::class, 'getAuthenticatedUser']);
 
 
 //Route::group(['middleware' => 'auth:api'],
 //function() {
 //Rotas de cliente
-    Route::post('register/cliente', [ClienteApiController::class, 'registerCliente']);
-    Route::get('clientes/{id}/documento', [ClienteApiController::class, 'documento']);
-    Route::get('clientes', [ClienteApiController::class, 'getClientes']);
-    Route::get('clientes/{id}/produto', [ClienteApiController::class, 'produto']);
-    Route:: apiResource('clientes', ClienteApiController::class);
+Route::post('register/cliente', [ClienteApiController::class, 'registerCliente']);
+Route::get('clientes/{id}/documento', [ClienteApiController::class, 'documento']);
+Route::get('clientes', [ClienteApiController::class, 'getClientes']);
+Route::get('clientes/{id}/produto', [ClienteApiController::class, 'produto']);
+Route:: apiResource('clientes', ClienteApiController::class);
 
 //rotas de documento
-    Route::get('documento/{id}/cliente', [DocumentoApiController::class, 'cliente']);
-    Route:: apiResource('documento', DocumentoApiController::class);
+Route::get('documento/{id}/cliente', [DocumentoApiController::class, 'cliente']);
+Route:: apiResource('documento', DocumentoApiController::class);
 
 //rotas de produto
-    Route::post('register/produto', [ProdutoApiController::class, "registerProduct"]);
-    Route::get('produto/{id}/clientes', [ProdutoApiController::class, 'cliente']);
-    Route::delete('produto/{id}', [ProdutoApiController::class, 'delete']);
-    Route::apiResource('produto', ProdutoApiController::class);
+Route::post('register/produto', [ProdutoApiController::class, "registerProduct"]);
+Route::get('produto/{id}/clientes', [ProdutoApiController::class, 'cliente']);
+Route::put('update/produto/{id}', [ProdutoApiController::class, 'update']);
+Route::delete('produto/{id}', [ProdutoApiController::class, 'delete']);
+Route::apiResource('produto', ProdutoApiController::class);
 //});
 
 
